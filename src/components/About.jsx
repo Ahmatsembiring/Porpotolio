@@ -1,3 +1,4 @@
+// src/components/About.jsx
 export default function About() {
   return (
     <section id="about" className="py-20 bg-white">
@@ -19,8 +20,13 @@ export default function About() {
           <div className="bg-gray-100 p-6 rounded-2xl">
             <h3 className="font-semibold text-lg mb-3">Tech Stack</h3>
             <div className="flex flex-wrap gap-2">
-              {['React', 'Tailwind CSS', 'JavaScript', 'Burp Suite', 'Nmap', 'OWASP ZAP', 'Git', 'Firebase'].map((tech) => (
-                <span key={tech} className="bg-white px-3 py-1 rounded-full text-sm border">{tech}</span>
+              {[
+                'React', 'Tailwind CSS', 'JavaScript', 'Burp Suite',
+                'Nmap', 'OWASP ZAP', 'Git', 'Firebase'
+              ].map((tech) => (
+                <span key={tech} className="bg-white px-3 py-1 rounded-full text-sm border">
+                  {tech}
+                </span>
               ))}
             </div>
           </div>
