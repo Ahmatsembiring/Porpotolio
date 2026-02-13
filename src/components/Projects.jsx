@@ -1,5 +1,5 @@
 import webJurnal from '../assets/images/projects/web-jurnal.png';
-import pentestReport from '../assets/images/projects/pentest-report.jpg';
+import pentestReport from '../assets/images/projects/pentest-report.JPG';
 
 export default function Projects() {
   const projects = [
