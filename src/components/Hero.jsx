@@ -8,7 +8,7 @@ import {
   FaYoutube,
   FaInstagram,
   FaCode,
-  FaShieldAlt,
+  FaUserShield, // ✅ diganti dari FaShieldAlt
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -25,7 +25,7 @@ export default function Hero() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center w-full z-10">
-        {/* Foto Profil — Dengan Dual Identity Overlay */}
+        {/* Foto Profil */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -33,9 +33,7 @@ export default function Hero() {
           className="relative flex justify-center"
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
-            {/* Left overlay: Web Dev */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent z-10"></div>
-            {/* Right overlay: Security */}
             <div className="absolute inset-0 bg-gradient-to-l from-purple-500/20 to-transparent z-10"></div>
 
             <img
@@ -44,7 +42,6 @@ export default function Hero() {
               className="w-full h-full object-cover"
             />
 
-            {/* Label kiri: Web Dev */}
             <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/2 p-4 text-left z-20">
               <div className="flex items-center gap-2">
                 <FaCode className="text-blue-500" />
@@ -52,11 +49,10 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Label kanan: Security */}
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 p-4 text-right z-20">
               <div className="flex items-center gap-2 justify-end">
                 <span className="text-xs font-medium text-purple-700">Security</span>
-                <FaShieldAlt className="text-purple-500" />
+                <FaUserShield className="text-purple-500" />
               </div>
             </div>
           </div>
@@ -85,7 +81,7 @@ export default function Hero() {
               backgroundSize: '200% 200%',
             }}
           >
-            Halo, saya Ahmat Prayoga Sembirirng 
+            Halo, saya Ahmat Prayoga Sembiring
           </motion.h1>
 
           <motion.p
@@ -120,7 +116,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Tombol Aksi */}
+          {/* Tombol */}
           <motion.div
             className="flex flex-wrap justify-center md:justify-start gap-4 mt-6"
             initial={{ opacity: 0, y: 20 }}
@@ -146,7 +142,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Sosial Media */}
+          {/* Sosial Media — tanpa spasi di URL! */}
           <motion.div
             className="flex justify-center md:justify-start space-x-5 mt-8"
             initial={{ opacity: 0, y: 20 }}
