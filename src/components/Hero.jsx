@@ -7,6 +7,8 @@ import {
   FaMedium,
   FaYoutube,
   FaInstagram,
+  FaCode,
+  FaShieldAlt,
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -16,29 +18,47 @@ export default function Hero() {
       id="home"
       className="min-h-screen flex items-center bg-gradient-to-b from-gray-50 to-white overflow-hidden relative"
     >
-      {/* Background accents (opsional, untuk kedalaman visual) */}
+      {/* Background accents */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center w-full z-10">
-        {/* Foto Profil */}
+        {/* Foto Profil — Dengan Dual Identity Overlay */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="flex justify-center"
+          className="relative flex justify-center"
         >
-          <div className="relative">
-            <motion.img
+          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+            {/* Left overlay: Web Dev */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent z-10"></div>
+            {/* Right overlay: Security */}
+            <div className="absolute inset-0 bg-gradient-to-l from-purple-500/20 to-transparent z-10"></div>
+
+            <img
               src={profileImg}
               alt="Ahmat Prayoga"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-4 border-white shadow-xl"
-              whileHover={{ scale: 1.03, rotate: 2 }}
-              transition={{ type: 'spring', stiffness: 300 }}
+              className="w-full h-full object-cover"
             />
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-500 rounded-full opacity-10 blur-xl"></div>
+
+            {/* Label kiri: Web Dev */}
+            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1/2 p-4 text-left z-20">
+              <div className="flex items-center gap-2">
+                <FaCode className="text-blue-500" />
+                <span className="text-xs font-medium text-blue-700">Web Dev</span>
+              </div>
+            </div>
+
+            {/* Label kanan: Security */}
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 p-4 text-right z-20">
+              <div className="flex items-center gap-2 justify-end">
+                <span className="text-xs font-medium text-purple-700">Security</span>
+                <FaShieldAlt className="text-purple-500" />
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -65,7 +85,7 @@ export default function Hero() {
               backgroundSize: '200% 200%',
             }}
           >
-            Halo, saya Ahmat Prayoga
+            Halo, saya Ahmat Prayoga Sembirirng 
           </motion.h1>
 
           <motion.p
@@ -78,6 +98,27 @@ export default function Hero() {
             <br />
             Membangun aplikasi yang cepat, indah, dan aman.
           </motion.p>
+
+          {/* Statistik Mini */}
+          <motion.div
+            className="grid grid-cols-3 gap-4 mb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+          >
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <p className="text-2xl font-bold text-blue-700">10+</p>
+              <p className="text-xs text-gray-600">Proyek</p>
+            </div>
+            <div className="bg-purple-50 p-3 rounded-lg">
+              <p className="text-2xl font-bold text-purple-700">2</p>
+              <p className="text-xs text-gray-600">Komunitas</p>
+            </div>
+            <div className="bg-green-50 p-3 rounded-lg">
+              <p className="text-2xl font-bold text-green-700">1+</p>
+              <p className="text-xs text-gray-600">Tahun</p>
+            </div>
+          </motion.div>
 
           {/* Tombol Aksi */}
           <motion.div
@@ -107,12 +148,11 @@ export default function Hero() {
 
           {/* Sosial Media */}
           <motion.div
-            className="flex justify-center md:justify-start space-x-5 mt-8 group"
+            className="flex justify-center md:justify-start space-x-5 mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
-            {/* LinkedIn - Aktif */}
             <motion.a
               href="https://linkedin.com/in/ahmatprayoga"
               target="_blank"
@@ -125,7 +165,6 @@ export default function Hero() {
               <FaLinkedin />
             </motion.a>
 
-            {/* GitHub - Aktif */}
             <motion.a
               href="https://github.com/Ahmatsembiring"
               target="_blank"
@@ -138,7 +177,6 @@ export default function Hero() {
               <FaGithub />
             </motion.a>
 
-            {/* Medium - Aktif */}
             <motion.a
               href="https://medium.com/@Ahmatsembiring"
               target="_blank"
@@ -151,8 +189,6 @@ export default function Hero() {
               <FaMedium />
             </motion.a>
 
-            {/* YouTube - Coming Soon */}
-            {/* YouTube - Aktif */}
             <motion.a
               href="https://www.youtube.com/@Programmer-ai-25"
               target="_blank"
@@ -165,7 +201,6 @@ export default function Hero() {
               <FaYoutube />
             </motion.a>
 
-            {/* Instagram - Aktif */}
             <motion.a
               href="https://www.instagram.com/ahnat_sembiring11"
               target="_blank"

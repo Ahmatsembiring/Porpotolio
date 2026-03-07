@@ -10,7 +10,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between h-16 items-center">
           <Link to="/" className="font-bold text-xl text-gray-800 hover:text-blue-600 transition">
-            DevSec
+            Ahmat Sembiring
           </Link>
 
           {/* Desktop Menu */}
