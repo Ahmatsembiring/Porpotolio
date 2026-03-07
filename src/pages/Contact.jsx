@@ -18,7 +18,7 @@ export default function Contact() {
     const json = JSON.stringify(object);
 
     try {
-      // 🔥 GANTI DENGAN FORMSPREE ENDPOINT ASLI KAMU DI SINI
+      // 🔥 GANTI DENGAN FORMSPREE ENDPOINT ASLI KAMU (tanpa spasi!)
       const response = await fetch('https://formspree.io/f/xnjbpwlg', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -171,11 +171,12 @@ export default function Contact() {
                   <FaEnvelope className="text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Email</p>
+                    {/* 🔸 Ganti dengan email asli kamu */}
                     <a
-                      href="mailto:hello@ahmatprayoga.com"
+                      href="mailto:ahmatsembiring11@gmail.com"
                       className="text-blue-600 hover:underline"
                     >
-                      hello@ahmatprayoga.com
+                      ahmatsembiring11@gmail.com
                     </a>
                   </div>
                 </div>
@@ -203,7 +204,7 @@ export default function Contact() {
                   <span>LinkedIn</span>
                 </a>
                 <a
-                  href="https://github.com/ahmatprayoga"
+                  href="https://github.com/Ahmatsembiring"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition"
@@ -211,8 +212,10 @@ export default function Contact() {
                   <FaGithub />
                   <span>GitHub</span>
                 </a>
+                {/* 🔸 Hapus Medium jika tidak aktif */}
+                {/* 
                 <a
-                  href="https://medium.com/@ahmatprayoga"
+                  href="https://medium.com/@ahmatsembiring"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-gray-100 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition"
@@ -220,6 +223,7 @@ export default function Contact() {
                   <FaMedium />
                   <span>Medium</span>
                 </a>
+                */}
               </div>
             </div>
 

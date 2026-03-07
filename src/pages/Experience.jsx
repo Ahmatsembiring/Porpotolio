@@ -1,9 +1,9 @@
 // src/pages/Experience.jsx
 import { motion } from "framer-motion";
-import { FaDiscord, FaInstagram, FaTiktok, FaEnvelope } from "react-icons/fa";
+import { FaDiscord, FaTiktok, FaEnvelope } from "react-icons/fa";
 
 import ravenLogo from '../assets/images/raven-logo.jpg';
-import sobatwebLogo from '../assets/images/sobatweb-logo.jpg';
+// Jika sobatweb-logo.jpg tidak ada, bisa ganti dengan placeholder atau hapus
 
 export default function Experience() {
   const organizationalExperiences = [
@@ -16,8 +16,8 @@ export default function Experience() {
       logo: ravenLogo,
       social: [
         { icon: <FaDiscord className="text-indigo-600" />, href: "https://discord.gg/raven", label: "Discord" },
-        { icon: <FaInstagram className="text-pink-600" />, href: "https://instagram.com/raven_cyber", label: "Instagram" },
-        { icon: <FaTiktok className="text-black" />, href: "https://tiktok.com/@raven_cyber", label: "TikTok" },
+        // Instagram @raven_cyber ada tapi private → tetap tampilkan (opsional)
+        { icon: <FaTiktok className="text-black" />, href: "https://www.tiktok.com/@raven_cyber", label: "TikTok" },
       ],
     },
     {
@@ -26,11 +26,11 @@ export default function Experience() {
       period: "2024 – Sekarang",
       description: "Menginisiasi platform edukasi teknologi berbasis AI untuk membantu pemula belajar web development dengan pendekatan interaktif.",
       tech: ["Edukasi", "AI", "Web Development"],
-      logo: sobatwebLogo,
+      // logo: sobatwebLogo, ← hapus jika gambarnya tidak ada
       social: [
         { icon: <FaEnvelope className="text-gray-700" />, href: "mailto:hello@sobatweb.ai", label: "Email" },
-        { icon: <FaInstagram className="text-pink-600" />, href: "https://instagram.com/sobatweb_ai", label: "Instagram" },
-        { icon: <FaTiktok className="text-black" />, href: "https://tiktok.com/@sobatweb_ai", label: "TikTok" },
+        // ❌ Instagram @sobatweb_ai TIDAK ADA → HAPUS
+        { icon: <FaTiktok className="text-black" />, href: "https://www.tiktok.com/@sobatweb_ai", label: "TikTok" },
       ],
     }
   ];
@@ -62,14 +62,11 @@ export default function Experience() {
     }
   ];
 
-  // Variants untuk animasi
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
+      transition: { staggerChildren: 0.15 },
     },
   };
 
@@ -85,18 +82,16 @@ export default function Experience() {
   return (
     <section className="py-20 bg-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4">
-
-        {/* Judul Utama — Fade In */}
         <motion.h1
           className="text-3xl md:text-4xl font-bold text-center mb-16"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6 }}
         >
           Pengalaman Saya
         </motion.h1>
 
-        {/* === BAGIAN ORGANISASI === */}
+        {/* === ORGANISASI === */}
         <div className="mb-20">
           <motion.h2
             className="text-2xl font-bold mb-8 text-center"
@@ -104,6 +99,7 @@ export default function Experience() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
+            Kepemimpinan & Komunitas
           </motion.h2>
 
           <motion.div
@@ -117,27 +113,30 @@ export default function Experience() {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 shadow-sm overflow-hidden"
+                className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 shadow-sm"
                 whileHover={{
                   y: -8,
                   boxShadow: "0 20px 25px -5px rgba(59, 130, 246, 0.15)",
-                  transition: { duration: 0.3, ease: "easeOut" }
                 }}
               >
                 <div className="flex items-start gap-4 mb-5">
                   <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm border border-gray-200">
-                    <img
-                      src={exp.logo}
-                      alt={exp.organization}
-                      className="w-10 h-10 object-contain"
-                      onError={(e) => {
-                        e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"%3E%3Crect width="40" height="40" fill="%23e5e7eb"/%3E%3Ctext x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="16" fill="%239ca3af"%3EΛ%3C/text%3E%3C/svg%3E';
-                      }}
-                    />
+                    {exp.logo ? (
+                      <img
+                        src={exp.logo}
+                        alt={exp.organization}
+                        className="w-10 h-10 object-contain"
+                        onError={(e) => {
+                          e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"%3E%3Crect width="40" height="40" fill="%23e5e7eb"/%3E%3Ctext x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="16" fill="%239ca3af"%3EΛ%3C/text%3E%3C/svg%3E';
+                        }}
+                      />
+                    ) : (
+                      <span className="text-gray-400 text-lg">Λ</span>
+                    )}
                   </div>
                   <div>
                     <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full mb-1">
-                      Founder
+                      {exp.title}
                     </span>
                     <h3 className="text-xl font-bold text-gray-800">{exp.organization}</h3>
                     <p className="text-gray-600 text-sm">{exp.period}</p>
@@ -148,15 +147,12 @@ export default function Experience() {
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {exp.tech.map((t, i) => (
-                    <motion.span
+                    <span
                       key={i}
                       className="bg-white text-blue-700 text-xs px-2 py-1 rounded border border-blue-200"
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.3 + i * 0.05 }}
                     >
                       {t}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
 
@@ -169,10 +165,7 @@ export default function Experience() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors"
                       aria-label={item.label}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5 + i * 0.1 }}
-                      whileHover={{ x: 4, scale: 1.05 }}
+                      whileHover={{ x: 4 }}
                     >
                       {item.icon}
                       <span>{item.label}</span>
@@ -184,7 +177,7 @@ export default function Experience() {
           </motion.div>
         </div>
 
-        {/* === BAGIAN PROFESIONAL === */}
+        {/* === PROFESIONAL === */}
         <div>
           <motion.h2
             className="text-2xl font-bold mb-8 text-center"
@@ -203,20 +196,14 @@ export default function Experience() {
             viewport={{ once: true, margin: "-100px" }}
           >
             {professionalExperiences.map((exp, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="pb-8 group"
-              >
-                {/* Timeline dot — animasi grow saat hover */}
+              <motion.div key={idx} variants={itemVariants} className="pb-8">
                 <motion.div
                   className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600"
                   whileHover={{ scale: 1.3 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  transition={{ type: "spring" }}
                 />
-
                 <div className="flex flex-wrap justify-between items-start gap-2 mb-3">
-                  <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {exp.title}
                   </h3>
                   <span className={`px-2 py-1 text-xs rounded-full ${
@@ -230,25 +217,17 @@ export default function Experience() {
                 <p className="font-medium text-gray-700">{exp.company}</p>
                 <p className="text-sm text-gray-500 mb-3">{exp.period}</p>
                 <p className="text-gray-700 mb-3">{exp.description}</p>
-                
                 <div className="flex flex-wrap gap-2">
                   {exp.tech.map((t, i) => (
-                    <motion.span
-                      key={i}
-                      className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
+                    <span key={i} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
                       {t}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
-
       </div>
     </section>
   );
