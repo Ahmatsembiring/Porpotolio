@@ -16,6 +16,7 @@ import ProjectsList from './pages/ProjectsList.jsx';
 import ProjectDetail from './pages/ProjectDetail.jsx';
 import Contact from './pages/Contact.jsx';
 import Experience from './pages/Experience.jsx';
+import Footer from './components/Footer.jsx'; // ✅ Sudah diimpor
 
 // Helper: Scroll ke atas & refresh AOS saat ganti halaman
 function ScrollToTop() {
@@ -23,24 +24,22 @@ function ScrollToTop() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    AOS.refresh(); // Refresh AOS jika konten dinamis berubah
+    AOS.refresh();
   }, [pathname]);
 
   return null;
 }
 
-// Inisialisasi AOS sekali saat app pertama kali load
 function initAOS() {
   AOS.init({
     duration: 800,
-    once: true,        // Hanya animasi sekali per elemen
-    offset: 100,       // Jarak dari viewport sebelum animasi jalan
-    easing: 'ease-out', // Jenis easing animasi
+    once: true,
+    offset: 100,
+    easing: 'ease-out',
   });
 }
 
 function App() {
-  // Jalankan AOS.init hanya sekali di client
   useEffect(() => {
     initAOS();
   }, []);
@@ -58,9 +57,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
 
-        <footer className="py-8 text-center text-gray-600 bg-gray-50 border-t">
-          © {new Date().getFullYear()} AhmatSembiring. All rights reserved.
-        </footer>
+        {/* ✅ GUNAKAN KOMPONEN FOOTER BARU DI SINI */}
+        <Footer />
       </div>
     </Router>
   );

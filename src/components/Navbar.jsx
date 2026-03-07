@@ -16,7 +16,7 @@ export default function Navbar() {
             to="/" 
             className="font-bold text-xl text-gray-800 hover:text-blue-600 transition"
           >
-            Ahmat Prayoga
+            Ahmat Prayoga Sembiring
           </Link>
 
           {/* Desktop Menu */}

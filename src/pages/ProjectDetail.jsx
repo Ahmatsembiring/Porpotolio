@@ -50,6 +50,7 @@ export default function ProjectDetail() {
     );
   }
 
+  // Gunakan public folder → path absolut
   const imgPath = `/images/projects/${project.id}.png`;
 
   return (
@@ -74,6 +75,7 @@ export default function ProjectDetail() {
           {project.title}
         </motion.h1>
 
+        {/* Gambar Proyek */}
         <motion.div
           className="w-full h-80 bg-gray-100 rounded-xl shadow-md mb-8 flex items-center justify-center overflow-hidden"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -83,13 +85,49 @@ export default function ProjectDetail() {
           <img
             src={imgPath}
             alt={project.title}
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"%3E%3Crect width="400" height="400" fill="%23f3f4f6"/%3E%3Ctext x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="24" fill="%239ca3af"%3E📷 Gambar Tidak Tersedia%3C/text%3E%3C/svg%3E';
+              e.target.outerHTML = `
+                <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                  📷 Gambar tidak tersedia
+                </div>
+              `;
             }}
           />
         </motion.div>
 
+        {/* Tombol Demo & Repo (Opsional) */}
+        {(project.demoUrl || project.repoUrl) && (
+          <motion.div
+            className="flex flex-wrap gap-3 mb-8"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              >
+                Lihat Demo
+              </a>
+            )}
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition"
+              >
+                Lihat Kode
+              </a>
+            )}
+          </motion.div>
+        )}
+
+        {/* Konten Detail */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -107,14 +145,7 @@ export default function ProjectDetail() {
                 <h2 className="text-xl font-semibold mb-3 text-gray-800">Fitur Utama</h2>
                 <ul className="list-disc pl-5 space-y-1 text-gray-700">
                   {project.details.features.map((f, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
-                      {f}
-                    </motion.li>
+                    <li key={i}>{f}</li>
                   ))}
                 </ul>
               </motion.div>
@@ -122,14 +153,7 @@ export default function ProjectDetail() {
                 <h2 className="text-xl font-semibold mb-3 text-gray-800">Tantangan & Solusi</h2>
                 <ul className="list-disc pl-5 space-y-1 text-gray-700">
                   {project.details.challenges.map((c, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
-                      {c}
-                    </motion.li>
+                    <li key={i}>{c}</li>
                   ))}
                 </ul>
               </motion.div>
@@ -144,14 +168,7 @@ export default function ProjectDetail() {
                 <h2 className="text-xl font-semibold mb-3 text-gray-800">Temuan Kerentanan</h2>
                 <ul className="list-disc pl-5 space-y-1 text-gray-700">
                   {project.details.findings.map((f, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
-                      {f}
-                    </motion.li>
+                    <li key={i}>{f}</li>
                   ))}
                 </ul>
               </motion.div>
@@ -159,20 +176,15 @@ export default function ProjectDetail() {
                 <h2 className="text-xl font-semibold mb-3 text-gray-800">Rekomendasi Mitigasi</h2>
                 <ul className="list-disc pl-5 space-y-1 text-gray-700">
                   {project.details.mitigation.map((m, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
-                      {m}
-                    </motion.li>
+                    <li key={i}>{m}</li>
                   ))}
                 </ul>
               </motion.div>
-              <motion.div variants={itemVariants}>
-                <p className="text-gray-700">{project.details.report}</p>
-              </motion.div>
+              {project.details.report && (
+                <motion.div variants={itemVariants}>
+                  <p className="text-gray-700">{project.details.report}</p>
+                </motion.div>
+              )}
             </>
           )}
 
