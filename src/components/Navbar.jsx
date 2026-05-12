@@ -4,10 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCode, FaBars, FaTimes } from 'react-icons/fa';
 
+// ✅ FIX: semua pakai format { to, label } yang konsisten
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/experience', label: 'Pengalaman' },
   { to: '/projects', label: 'Proyek' },
+  { to: '/cv', label: 'CV' },
+  { to: '/sertifikasi', label: 'Sertifikasi' },
   { to: '/contact', label: 'Kontak' },
 ];
 
@@ -22,7 +25,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => setIsOpen(false), [location]);
 
   const isActive = (path) => location.pathname === path;
@@ -58,7 +60,6 @@ export default function Navbar() {
           justify-content: space-between;
           height: 64px;
         }
-        /* Brand */
         .nav-brand {
           display: flex;
           align-items: center;
@@ -85,7 +86,6 @@ export default function Navbar() {
           flex-shrink: 0;
           box-shadow: 0 4px 12px rgba(59,130,246,0.35);
         }
-        /* Desktop links */
         .nav-links {
           display: none;
           align-items: center;
@@ -118,7 +118,6 @@ export default function Navbar() {
           background: linear-gradient(135deg, #3b82f6, #8b5cf6);
           border-radius: 50%;
         }
-        /* Mobile toggle */
         .nav-toggle {
           display: flex;
           align-items: center;
@@ -134,7 +133,6 @@ export default function Navbar() {
         }
         .nav-toggle:hover { background: rgba(139,92,246,0.15); }
         @media (min-width: 768px) { .nav-toggle { display: none; } }
-        /* Mobile drawer */
         .mobile-menu {
           position: fixed;
           inset: 0;
@@ -185,7 +183,6 @@ export default function Navbar() {
 
       <nav className={`navbar ${scrolled ? 'scrolled' : 'top'}`}>
         <div className="nav-inner">
-          {/* Brand */}
           <Link to="/" className="nav-brand">
             <div className="nav-brand-icon"><FaCode /></div>
             Ahmat Prayoga

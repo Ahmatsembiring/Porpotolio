@@ -14,7 +14,7 @@ const contactInfo = [
 ];
 
 const socials = [
-  { icon: FaLinkedin, href: 'https://linkedin.com/in/ahmatprayoga', label: 'LinkedIn', bg: 'linear-gradient(135deg,#0077b5,#0a91d4)' },
+  { icon: FaLinkedin, href: 'https://linkedin.com/in/ahmatsembiring', label: 'LinkedIn', bg: 'linear-gradient(135deg,#0077b5,#0a91d4)' },
   { icon: FaGithub, href: 'https://github.com/Ahmatsembiring', label: 'GitHub', bg: 'linear-gradient(135deg,#1f2937,#374151)' },
   { icon: FaDiscord, href: 'https://discord.gg/raven', label: 'Discord', bg: 'linear-gradient(135deg,#5865f2,#7289da)' },
   { icon: FaInstagram, href: 'https://www.instagram.com/ahnat_sembiring11/', label: 'Instagram', bg: 'linear-gradient(135deg,#e1306c,#f77737)' },
