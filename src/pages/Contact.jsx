@@ -8,23 +8,23 @@ import {
 } from 'react-icons/fa';
 
 const contactInfo = [
-  { icon: FaEnvelope,      label: 'Email',   value: 'ahmatsembiring11@gmail.com', href: 'mailto:ahmatsembiring11@gmail.com', color: '#3b82f6', bg: 'rgba(59,130,246,0.1)' },
-  { icon: FaMapMarkerAlt,  label: 'Lokasi',  value: 'Medan, Sumatera Utara, Indonesia', href: null, color: '#ec4899', bg: 'rgba(236,72,153,0.1)' },
-  { icon: FaClock,         label: 'Respon',  value: 'Biasanya dalam 1–2 hari kerja', href: null, color: '#10b981', bg: 'rgba(16,185,129,0.1)' },
+  { icon: FaEnvelope, label: 'Email', value: 'ahmatprayoga099@gmail.com', href: 'mailto:ahmatprayogas099@gmail.com', color: '#3b82f6', bg: 'rgba(59,130,246,0.1)' },
+  { icon: FaMapMarkerAlt, label: 'Lokasi', value: 'Bandar Lampung, Indonesia', href: null, color: '#ec4899', bg: 'rgba(236,72,153,0.1)' },
+  { icon: FaClock, label: 'Respon', value: 'Biasanya dalam 1–2 hari kerja', href: null, color: '#10b981', bg: 'rgba(16,185,129,0.1)' },
 ];
 
 const socials = [
-  { icon: FaLinkedin,  href: 'https://linkedin.com/in/ahmatprayoga',         label: 'LinkedIn',  bg: 'linear-gradient(135deg,#0077b5,#0a91d4)' },
-  { icon: FaGithub,    href: 'https://github.com/Ahmatsembiring',            label: 'GitHub',    bg: 'linear-gradient(135deg,#1f2937,#374151)' },
-  { icon: FaDiscord,   href: 'https://discord.gg/raven',                    label: 'Discord',   bg: 'linear-gradient(135deg,#5865f2,#7289da)' },
+  { icon: FaLinkedin, href: 'https://linkedin.com/in/ahmatprayoga', label: 'LinkedIn', bg: 'linear-gradient(135deg,#0077b5,#0a91d4)' },
+  { icon: FaGithub, href: 'https://github.com/Ahmatsembiring', label: 'GitHub', bg: 'linear-gradient(135deg,#1f2937,#374151)' },
+  { icon: FaDiscord, href: 'https://discord.gg/raven', label: 'Discord', bg: 'linear-gradient(135deg,#5865f2,#7289da)' },
   { icon: FaInstagram, href: 'https://www.instagram.com/ahnat_sembiring11/', label: 'Instagram', bg: 'linear-gradient(135deg,#e1306c,#f77737)' },
 ];
 
 export default function Contact() {
-  const [form, setForm]           = useState({ name: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setSubmit] = useState(false);
-  const [status, setStatus]       = useState(null);
-  const [focused, setFocused]     = useState('');
+  const [status, setStatus] = useState(null);
+  const [focused, setFocused] = useState('');
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
@@ -157,7 +157,7 @@ export default function Contact() {
 
       <section className="contact-page">
         <div className="contact-container">
-          <motion.div className="contact-header" initial={{ opacity:0,y:30 }} animate={{ opacity:1,y:0 }} transition={{ duration:.7,ease:[.16,1,.3,1] }}>
+          <motion.div className="contact-header" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7, ease: [.16, 1, .3, 1] }}>
             <span className="contact-tag">📬 Hubungi Saya</span>
             <h1 className="contact-title">Mari Bekerja Sama!</h1>
             <p className="contact-sub">Terbuka untuk proyek web, audit keamanan, kolaborasi edukasi, atau sekadar ngobrol tech.</p>
@@ -165,16 +165,16 @@ export default function Contact() {
 
           <div className="contact-grid">
             {/* Form */}
-            <motion.div className="form-card" initial={{ opacity:0,x:-40 }} animate={{ opacity:1,x:0 }} transition={{ duration:.8,delay:.1,ease:[.16,1,.3,1] }}>
+            <motion.div className="form-card" initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .8, delay: .1, ease: [.16, 1, .3, 1] }}>
               <p className="form-title"><FaPaperPlane /> Kirim Pesan</p>
               <AnimatePresence>
                 {status === 'success' && (
-                  <motion.div className="status-alert status-success" initial={{ opacity:0,y:-8 }} animate={{ opacity:1,y:0 }} exit={{ opacity:0,y:-8 }}>
+                  <motion.div className="status-alert status-success" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
                     <FaCheckCircle /><span>Pesan berhasil terkirim! Saya akan segera merespons.</span>
                   </motion.div>
                 )}
                 {status === 'error' && (
-                  <motion.div className="status-alert status-error" initial={{ opacity:0,y:-8 }} animate={{ opacity:1,y:0 }} exit={{ opacity:0,y:-8 }}>
+                  <motion.div className="status-alert status-error" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
                     <FaTimesCircle /><span>Terjadi kesalahan. Coba via email langsung.</span>
                   </motion.div>
                 )}
@@ -182,9 +182,9 @@ export default function Contact() {
 
               <form onSubmit={handleSubmit}>
                 {[
-                  { name:'name',    label:'Nama',   type:'text',  placeholder:'Nama lengkap Anda' },
-                  { name:'email',   label:'Email',  type:'email', placeholder:'email@contoh.com' },
-                  { name:'subject', label:'Subjek', type:'text',  placeholder:'Misal: Kolaborasi Proyek' },
+                  { name: 'name', label: 'Nama', type: 'text', placeholder: 'Nama lengkap Anda' },
+                  { name: 'email', label: 'Email', type: 'email', placeholder: 'email@contoh.com' },
+                  { name: 'subject', label: 'Subjek', type: 'text', placeholder: 'Misal: Kolaborasi Proyek' },
                 ].map(({ name, label, type, placeholder }) => (
                   <div className="field-group" key={name}>
                     <label className="field-label" htmlFor={name}>{label}</label>
@@ -204,19 +204,19 @@ export default function Contact() {
                   />
                 </div>
                 <motion.button type="submit" className="submit-btn" disabled={isSubmitting}
-                  whileHover={!isSubmitting ? { y:-2 } : {}} whileTap={!isSubmitting ? { scale:.98 } : {}}>
+                  whileHover={!isSubmitting ? { y: -2 } : {}} whileTap={!isSubmitting ? { scale: .98 } : {}}>
                   <FaPaperPlane /> {isSubmitting ? 'Mengirim…' : 'Kirim Pesan'}
                 </motion.button>
               </form>
             </motion.div>
 
             {/* Right */}
-            <motion.div className="contact-right" initial={{ opacity:0,x:40 }} animate={{ opacity:1,x:0 }} transition={{ duration:.8,delay:.2,ease:[.16,1,.3,1] }}>
+            <motion.div className="contact-right" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .8, delay: .2, ease: [.16, 1, .3, 1] }}>
               <div className="info-card">
                 <p className="info-card-title">Info Kontak</p>
-                {contactInfo.map(({ icon:Icon, label, value, href, color, bg }) => (
+                {contactInfo.map(({ icon: Icon, label, value, href, color, bg }) => (
                   <div className="info-item" key={label}>
-                    <div className="info-icon" style={{ background:bg, color }}><Icon /></div>
+                    <div className="info-icon" style={{ background: bg, color }}><Icon /></div>
                     <div>
                       <p className="info-label">{label}</p>
                       <p className="info-value">{href ? <a href={href}>{value}</a> : value}</p>
@@ -228,10 +228,10 @@ export default function Contact() {
               <div className="info-card">
                 <p className="info-card-title">Temukan Saya di</p>
                 <div className="social-btns">
-                  {socials.map(({ icon:Icon, href, label, bg }) => (
+                  {socials.map(({ icon: Icon, href, label, bg }) => (
                     <motion.a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                      className="social-btn" style={{ background:bg }}
-                      whileHover={{ y:-3, scale:1.04 }} whileTap={{ scale:.96 }}>
+                      className="social-btn" style={{ background: bg }}
+                      whileHover={{ y: -3, scale: 1.04 }} whileTap={{ scale: .96 }}>
                       <Icon /> {label}
                     </motion.a>
                   ))}
