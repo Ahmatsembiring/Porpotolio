@@ -9,8 +9,7 @@ const sertifikasiData = [
     penerbit: 'EC-Council',
     tahun: '2024',
     kategori: 'Security',
-    gambar: '/sertifikasi/ceh.jpg',
-    link: 'https://link-verifikasi.com',
+    gambar: '/sertifikasi/sertifikat1.png',
   },
   {
     id: 2,
@@ -18,8 +17,63 @@ const sertifikasiData = [
     penerbit: 'Udemy',
     tahun: '2023',
     kategori: 'Web Dev',
-    gambar: '/sertifikasi/webdev.jpg',
-    link: 'https://link-verifikasi.com',
+    gambar: '/sertifikasi/sertifikat2.png',
+  },
+  {
+    id: 3,
+    nama: 'Cloud Computing Fundamentals',
+    penerbit: 'AWS',
+    tahun: '2023',
+    kategori: 'Cloud',
+    gambar: '/sertifikasi/sertifikat3.png',
+  },
+  {
+    id: 4,
+    nama: 'Artificial Intelligence Fundamentals',
+    penerbit: 'Coursera',
+    tahun: '2023',
+    kategori: 'AI',
+    gambar: '/sertifikasi/sertifikat4.png',
+  },
+  {
+    id: 5,
+    nama: 'Web Development Bootcamp',
+    penerbit: 'Udemy',
+    tahun: '2023',
+    kategori: 'Web Dev',
+    gambar: '/sertifikasi/sertifikat5.png',
+  },
+  {
+    id: 6,
+    nama: 'Web Development Bootcamp',
+    penerbit: 'Udemy',
+    tahun: '2023',
+    kategori: 'Web Dev',
+    gambar: '/sertifikasi/sertifikat6.jpg',
+  },
+   {
+    id: 7,
+    nama: 'Web Development Bootcamp',
+    penerbit: 'Udemy',
+    tahun: '2023',
+    kategori: 'Web Dev',
+    gambar: '/sertifikasi/sertifikat7.png',
+  },
+  {
+    id: 8,
+    nama: 'Web Development Bootcamp',
+    penerbit: 'Udemy',
+    tahun: '2023',
+    kategori: 'Web Dev',
+    gambar: '/sertifikasi/sertifikat8.png',
+  },
+  {
+    id: 9,
+    nama: 'Web Development Bootcamp',
+    penerbit: 'Udemy',
+    tahun: '2023',
+    kategori: 'Web Dev',
+    gambar: '/sertifikasi/sertifikat9.png',
   },
 ];
 
@@ -39,7 +93,6 @@ const Sertifikasi = () => {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-16 px-4">
       <div className="max-w-5xl mx-auto">
-
         {/* Header */}
         <div className="text-center mb-12" data-aos="fade-up">
           <h1 className="text-4xl font-bold text-gray-800 mb-2">Sertifikasi</h1>
@@ -72,7 +125,9 @@ const Sertifikasi = () => {
               {/* Info */}
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badgeColor[item.kategori] || badgeColor.Other}`}>
+                  <span
+                    className={`text-xs font-semibold px-3 py-1 rounded-full ${badgeColor[item.kategori] || badgeColor.Other}`}
+                  >
                     {item.kategori}
                   </span>
                   <span className="text-xs text-gray-400">{item.tahun}</span>
@@ -102,7 +157,6 @@ const Sertifikasi = () => {
             <p className="text-xl">Belum ada sertifikasi ditambahkan.</p>
           </div>
         )}
-
       </div>
     </div>
   );
