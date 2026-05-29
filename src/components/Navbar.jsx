@@ -9,6 +9,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/experience', label: 'Pengalaman' },
   { to: '/projects', label: 'Proyek' },
+  { to: '/blog', label: 'Blog' },
   { to: '/cv', label: 'CV' },
   { to: '/sertifikasi', label: 'Sertifikasi' },
   { to: '/contact', label: 'Kontak' },
@@ -27,7 +28,9 @@ export default function Navbar() {
 
   useEffect(() => setIsOpen(false), [location]);
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => (
+    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
+  );
 
   return (
     <>

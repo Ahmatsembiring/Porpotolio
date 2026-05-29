@@ -20,6 +20,7 @@ const navLinks = [
   { to: '/',           label: 'Home' },
   { to: '/experience', label: 'Pengalaman' },
   { to: '/projects',   label: 'Proyek' },
+  { to: '/blog',       label: 'Blog' },
   { to: '/contact',    label: 'Kontak' },
 ];
 
