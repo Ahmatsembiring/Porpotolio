@@ -19,7 +19,7 @@ const MotionHeader = motion.header;
 const sertifikasiData = [
   {
     id: 1,
-    nama: 'Certified Ethical Hacker (CEH)',
+    nama: 'Certified Apresiasion ',
     penerbit: 'EC-Council',
     tahun: '2024',
     kategori: 'Security',

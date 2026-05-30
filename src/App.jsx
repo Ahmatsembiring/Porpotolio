@@ -8,6 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import Navbar from './components/Navbar.jsx';
+import SpiderWebBackground from './components/SpiderWebBackground.jsx';
 import Home from './pages/Home.jsx';
 import ProjectsList from './pages/ProjectsList.jsx';
 import ProjectDetail from './pages/ProjectDetail.jsx';
@@ -41,9 +42,11 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="font-sans">
-        <Navbar />
-        <Routes>
+      <div className="site-shell font-sans">
+        <SpiderWebBackground />
+        <div className="site-content">
+          <Navbar />
+          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<ProjectsList />} />
@@ -53,8 +56,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/cv" element={<CV />} />               {/* ✅ BARU */}
           <Route path="/sertifikasi" element={<Sertifikasi />} /> {/* ✅ BARU */}
-        </Routes>
-        <Footer />
+          </Routes>
+          <Footer />
+        </div>
       </div>
     </Router>
   );
