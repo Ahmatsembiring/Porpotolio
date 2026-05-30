@@ -12,6 +12,7 @@ import SpiderWebBackground from './components/SpiderWebBackground.jsx';
 import Home from './pages/Home.jsx';
 import ProjectsList from './pages/ProjectsList.jsx';
 import ProjectDetail from './pages/ProjectDetail.jsx';
+import DownloadCenter from './pages/DownloadCenter.jsx';
 import Blog from './pages/Blog.jsx';
 import BlogDetail from './pages/BlogDetail.jsx';
 import Contact from './pages/Contact.jsx';
@@ -67,6 +68,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<ProjectsList />} />
+          <Route path="/projects/download" element={<DownloadCenter />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />

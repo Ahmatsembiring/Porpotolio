@@ -2,13 +2,20 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCode, FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
+import { FaCode, FaBars, FaTimes, FaMoon, FaSun, FaChevronDown } from 'react-icons/fa';
 
 // ✅ FIX: semua pakai format { to, label } yang konsisten
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/experience', label: 'Pengalaman' },
-  { to: '/projects', label: 'Proyek' },
+  {
+    to: '/projects',
+    label: 'Proyek',
+    children: [
+      { to: '/projects', label: 'Project' },
+      { to: '/projects/download', label: 'Download' },
+    ],
+  },
   { to: '/abasecurity-lab', label: 'Lab' },
   { to: '/blog', label: 'Blog' },
   { to: '/cv', label: 'CV' },
@@ -30,8 +37,17 @@ export default function Navbar({ theme = 'dark', onToggleTheme = () => {} }) {
 
   useEffect(() => setIsOpen(false), [location]);
 
-  const isActive = (path) => (
-    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
+  const isActive = (path) => {
+    if (path === '/') return location.pathname === '/';
+    if (path === '/projects') {
+      return location.pathname === '/projects' ||
+        (location.pathname.startsWith('/projects/') && location.pathname !== '/projects/download');
+    }
+    return location.pathname === path || location.pathname.startsWith(`${path}/`);
+  };
+
+  const isItemActive = (item) => (
+    item.children ? item.children.some((child) => isActive(child.to)) : isActive(item.to)
   );
 
   return (
@@ -109,6 +125,68 @@ export default function Navbar({ theme = 'dark', onToggleTheme = () => {} }) {
           border-radius: 10px;
           transition: color 0.2s, background 0.2s;
           color: #475569;
+        }
+        .nav-item {
+          position: relative;
+        }
+        .nav-link-parent {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+        }
+        .nav-link-chevron {
+          font-size: 0.65rem;
+          transition: transform 0.2s;
+        }
+        .nav-item:hover .nav-link-chevron,
+        .nav-item:focus-within .nav-link-chevron {
+          transform: rotate(180deg);
+        }
+        .nav-dropdown {
+          position: absolute;
+          top: calc(100% + 10px);
+          left: 50%;
+          min-width: 180px;
+          padding: 0.45rem;
+          border-radius: 16px;
+          background: rgba(3,7,18,0.94);
+          border: 1px solid rgba(148,163,184,0.16);
+          box-shadow: 0 18px 54px rgba(0,0,0,0.28);
+          transform: translate(-50%, 8px);
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.18s ease, transform 0.18s ease;
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+        }
+        .nav-dropdown::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -12px;
+          height: 12px;
+        }
+        .nav-item:hover .nav-dropdown,
+        .nav-item:focus-within .nav-dropdown {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translate(-50%, 0);
+        }
+        .nav-dropdown-link {
+          display: block;
+          border-radius: 12px;
+          padding: 0.72rem 0.85rem;
+          color: #cbd5e1;
+          font-size: 0.84rem;
+          font-weight: 800;
+          text-decoration: none;
+          transition: color 0.2s, background 0.2s;
+        }
+        .nav-dropdown-link:hover,
+        .nav-dropdown-link.active {
+          color: #fff;
+          background: rgba(56,189,248,0.13);
         }
         .nav-link:hover { color: #6d28d9; background: rgba(139,92,246,0.07); }
         .nav-link.active {
@@ -213,6 +291,42 @@ export default function Navbar({ theme = 'dark', onToggleTheme = () => {} }) {
           align-items: center;
           gap: 0.5rem;
         }
+        .mobile-nav-group {
+          margin-bottom: 4px;
+        }
+        .mobile-nav-parent {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 14px;
+          border-radius: 12px;
+          font-weight: 800;
+          color: #cbd5e1;
+        }
+        .mobile-nav-parent.active {
+          background: rgba(56,189,248,0.1);
+          color: #e0f2fe;
+        }
+        .mobile-sub-links {
+          display: grid;
+          gap: 4px;
+          padding: 0 0 0 0.85rem;
+        }
+        .mobile-sub-link {
+          display: flex;
+          align-items: center;
+          padding: 10px 14px;
+          border-radius: 12px;
+          color: #94a3b8;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 700;
+        }
+        .mobile-sub-link:hover,
+        .mobile-sub-link.active {
+          background: rgba(56,189,248,0.1);
+          color: #e0f2fe;
+        }
         .mobile-nav-link {
           display: flex;
           align-items: center;
@@ -239,12 +353,29 @@ export default function Navbar({ theme = 'dark', onToggleTheme = () => {} }) {
 
           {/* Desktop Nav */}
           <ul className="nav-links">
-            {navLinks.map(({ to, label }) => (
-              <li key={to}>
-                <Link to={to} className={`nav-link ${isActive(to) ? 'active' : ''}`}>
-                  {label}
-                  {isActive(to) && <span className="nav-link-dot" />}
+            {navLinks.map((item) => (
+              <li key={item.to} className={item.children ? 'nav-item' : undefined}>
+                <Link
+                  to={item.to}
+                  className={`nav-link ${item.children ? 'nav-link-parent' : ''} ${isItemActive(item) ? 'active' : ''}`}
+                >
+                  {item.label}
+                  {item.children && <FaChevronDown className="nav-link-chevron" />}
+                  {isItemActive(item) && <span className="nav-link-dot" />}
                 </Link>
+                {item.children && (
+                  <div className="nav-dropdown">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.to}
+                        to={child.to}
+                        className={`nav-dropdown-link ${isActive(child.to) ? 'active' : ''}`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -323,19 +454,39 @@ export default function Navbar({ theme = 'dark', onToggleTheme = () => {} }) {
                   </motion.button>
                 </div>
               </div>
-              {navLinks.map(({ to, label }, i) => (
+              {navLinks.map((item, i) => (
                 <motion.div
-                  key={to}
+                  key={item.to}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 }}
                 >
-                  <Link
-                    to={to}
-                    className={`mobile-nav-link ${isActive(to) ? 'active' : ''}`}
-                  >
-                    {label}
-                  </Link>
+                  {item.children ? (
+                    <div className="mobile-nav-group">
+                      <div className={`mobile-nav-parent ${isItemActive(item) ? 'active' : ''}`}>
+                        {item.label}
+                        <FaChevronDown />
+                      </div>
+                      <div className="mobile-sub-links">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.to}
+                            to={child.to}
+                            className={`mobile-sub-link ${isActive(child.to) ? 'active' : ''}`}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      to={item.to}
+                      className={`mobile-nav-link ${isActive(item.to) ? 'active' : ''}`}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </motion.div>
