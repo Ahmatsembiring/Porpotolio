@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCode, FaBars, FaTimes } from 'react-icons/fa';
+import { FaCode, FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
 
 // ✅ FIX: semua pakai format { to, label } yang konsisten
 const navLinks = [
@@ -15,10 +15,11 @@ const navLinks = [
   { to: '/contact', label: 'Kontak' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ theme = 'dark', onToggleTheme = () => {} }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -121,6 +122,45 @@ export default function Navbar() {
           background: linear-gradient(135deg, #3b82f6, #8b5cf6);
           border-radius: 50%;
         }
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 0.55rem;
+        }
+        .theme-toggle {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          min-width: 42px;
+          height: 38px;
+          padding: 0 11px;
+          border: 1px solid rgba(148,163,184,0.18);
+          border-radius: 999px;
+          background: rgba(15,23,42,0.76);
+          color: #cbd5e1;
+          font: inherit;
+          font-size: 0.8rem;
+          font-weight: 800;
+          cursor: pointer;
+          transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+        }
+        .theme-toggle:hover {
+          background: rgba(56,189,248,0.12);
+          border-color: rgba(56,189,248,0.34);
+          color: #f8fafc;
+        }
+        .theme-toggle-icon {
+          display: grid;
+          place-items: center;
+          font-size: 0.9rem;
+        }
+        .theme-toggle-text {
+          display: none;
+        }
+        @media (min-width: 1024px) {
+          .theme-toggle-text { display: inline; }
+        }
         .nav-toggle {
           display: flex;
           align-items: center;
@@ -167,6 +207,11 @@ export default function Navbar() {
           margin-bottom: 1.25rem;
           padding-top: 10px;
         }
+        .mobile-header-actions {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
         .mobile-nav-link {
           display: flex;
           align-items: center;
@@ -203,15 +248,30 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Mobile Toggle */}
-          <motion.button
-            className="nav-toggle"
-            onClick={() => setIsOpen((o) => !o)}
-            aria-label={isOpen ? 'Tutup menu' : 'Buka menu'}
-            whileTap={{ scale: 0.92 }}
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </motion.button>
+          <div className="nav-actions">
+            <motion.button
+              type="button"
+              className="theme-toggle"
+              onClick={onToggleTheme}
+              aria-label={isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap'}
+              whileTap={{ scale: 0.92 }}
+            >
+              <span className="theme-toggle-icon">
+                {isDark ? <FaSun /> : <FaMoon />}
+              </span>
+              <span className="theme-toggle-text">{isDark ? 'Light' : 'Dark'}</span>
+            </motion.button>
+
+            {/* Mobile Toggle */}
+            <motion.button
+              className="nav-toggle"
+              onClick={() => setIsOpen((o) => !o)}
+              aria-label={isOpen ? 'Tutup menu' : 'Buka menu'}
+              whileTap={{ scale: 0.92 }}
+            >
+              {isOpen ? <FaTimes /> : <FaBars />}
+            </motion.button>
+          </div>
         </div>
       </nav>
 
@@ -241,13 +301,26 @@ export default function Navbar() {
                   <div className="nav-brand-icon"><FaCode /></div>
                   Ahmat Prayoga
                 </Link>
-                <motion.button
-                  className="nav-toggle"
-                  onClick={() => setIsOpen(false)}
-                  whileTap={{ scale: 0.92 }}
-                >
-                  <FaTimes />
-                </motion.button>
+                <div className="mobile-header-actions">
+                  <motion.button
+                    type="button"
+                    className="theme-toggle"
+                    onClick={onToggleTheme}
+                    aria-label={isDark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap'}
+                    whileTap={{ scale: 0.92 }}
+                  >
+                    <span className="theme-toggle-icon">
+                      {isDark ? <FaSun /> : <FaMoon />}
+                    </span>
+                  </motion.button>
+                  <motion.button
+                    className="nav-toggle"
+                    onClick={() => setIsOpen(false)}
+                    whileTap={{ scale: 0.92 }}
+                  >
+                    <FaTimes />
+                  </motion.button>
+                </div>
               </div>
               {navLinks.map(({ to, label }, i) => (
                 <motion.div

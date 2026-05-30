@@ -1,6 +1,6 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'swiper/css';
@@ -20,6 +20,11 @@ import CV from './pages/CV.jsx';               // ✅ BARU
 import Sertifikasi from './pages/Sertifikasi.jsx'; // ✅ BARU
 import Footer from './components/Footer.jsx';
 
+const getInitialTheme = () => {
+  if (typeof window === 'undefined') return 'dark';
+  return window.localStorage.getItem('portfolio-theme') || 'dark';
+};
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -30,6 +35,8 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [theme, setTheme] = useState(getInitialTheme);
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -39,13 +46,22 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
+  };
+
   return (
     <Router>
       <ScrollToTop />
-      <div className="site-shell font-sans">
+      <div className="site-shell font-sans" data-theme={theme}>
         <SpiderWebBackground />
         <div className="site-content">
-          <Navbar />
+          <Navbar theme={theme} onToggleTheme={toggleTheme} />
           <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/experience" element={<Experience />} />
