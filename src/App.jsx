@@ -16,6 +16,7 @@ import Blog from './pages/Blog.jsx';
 import BlogDetail from './pages/BlogDetail.jsx';
 import Contact from './pages/Contact.jsx';
 import Experience from './pages/Experience.jsx';
+import AbaSecurityLab from './pages/AbaSecurityLab.jsx';
 import CV from './pages/CV.jsx';               // ✅ BARU
 import Sertifikasi from './pages/Sertifikasi.jsx'; // ✅ BARU
 import Footer from './components/Footer.jsx';
@@ -70,6 +71,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/abasecurity-lab" element={<AbaSecurityLab />} />
           <Route path="/cv" element={<CV />} />               {/* ✅ BARU */}
           <Route path="/sertifikasi" element={<Sertifikasi />} /> {/* ✅ BARU */}
           </Routes>

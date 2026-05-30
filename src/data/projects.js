@@ -104,6 +104,34 @@ export const projects = [
 
   // === SECURITY / PENETRATION TESTING ===
   {
+    id: 'abasecurity-lab',
+    title: 'AbaSecurity Lab',
+    category: 'security',
+    tech: 'React, Node.js, Express, MySQL, OWASP Top 10, Mini WAF',
+    overview: 'Platform pembelajaran dan simulasi kerentanan aplikasi web berbasis OWASP Top 10 dengan skenario offensive dan defensive security.',
+    demoUrl: '/abasecurity-lab',
+    details: {
+      findings: [
+        'Simulasi SQL Injection pada fitur login, pencarian data, dan query database',
+        'Cross-Site Scripting pada fitur komentar dan input user yang tidak disanitasi',
+        'Broken Access Control melalui role user dan admin yang sengaja dibuat rentan',
+        'File Upload Vulnerability dengan validasi ekstensi dan MIME type yang lemah',
+        'Authentication Security issue seperti brute force login dan session handling yang tidak aman',
+        'Security event monitoring untuk payload SQLi, XSS, akses tidak sah, dan upload file mencurigakan'
+      ],
+      mitigation: [
+        'Menggunakan parameterized query untuk mencegah SQL Injection',
+        'Melakukan output encoding dan sanitasi input untuk mencegah XSS',
+        'Menerapkan role-based access control dan validasi authorization di sisi server',
+        'Membatasi tipe file, ukuran file, rename file, dan menyimpan upload di direktori aman',
+        'Menambahkan rate limiting, account lockout, dan brute force detection pada proses login',
+        'Membangun mini WAF dengan mode OFF, Detection Only, dan Blocking Mode untuk visualisasi deteksi serangan',
+        'Mencatat security logging dan menampilkan aktivitas mencurigakan di admin security dashboard'
+      ],
+      report: 'Project ini dibuat sebagai lab aman dan terkontrol untuk mendemonstrasikan proses identifikasi, eksploitasi etis, analisis, logging, serta mitigasi kerentanan aplikasi web.'
+    }
+  },
+  {
     id: 'pentest-ecommerce',
     title: 'Pentest Aplikasi E-Commerce',
     category: 'security',

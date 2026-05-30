@@ -9,6 +9,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/experience', label: 'Pengalaman' },
   { to: '/projects', label: 'Proyek' },
+  { to: '/abasecurity-lab', label: 'Lab' },
   { to: '/blog', label: 'Blog' },
   { to: '/cv', label: 'CV' },
   { to: '/sertifikasi', label: 'Sertifikasi' },
