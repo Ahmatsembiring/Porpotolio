@@ -74,6 +74,8 @@ function App() {
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/abasecurity-lab" element={<AbaSecurityLab />} />
+          <Route path="/abasecurity-lab/:categorySlug" element={<AbaSecurityLab />} />
+          <Route path="/abasecurity-lab/:categorySlug/:scenarioSlug" element={<AbaSecurityLab />} />
           <Route path="/cv" element={<CV />} />               {/* ✅ BARU */}
           <Route path="/sertifikasi" element={<Sertifikasi />} /> {/* ✅ BARU */}
           </Routes>
