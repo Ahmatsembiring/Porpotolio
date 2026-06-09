@@ -216,7 +216,7 @@ export default function Footer() {
                 <span className="footer-brand-name">Ahmat Prayoga</span>
               </Link>
               <p className="footer-brand-desc">
-                Web Developer &amp; Cybersecurity Enthusiast dari Medan.
+                Offensive Security &amp; Web Developer.
                 Membangun aplikasi yang cepat, indah, dan aman.
               </p>
               <div className="footer-socials">
