@@ -19,8 +19,8 @@ const MotionHeader = motion.header;
 const sertifikasiData = [
   {
     id: 1,
-    nama: 'Certified Apresiasion ',
-    penerbit: 'EC-Council',
+    nama: 'Certified Apresiasion BMKG',
+    penerbit: 'BMKG',
     tahun: '2024',
     kategori: 'Security',
     gambar: '/sertifikasi/sertifikat1.png',
