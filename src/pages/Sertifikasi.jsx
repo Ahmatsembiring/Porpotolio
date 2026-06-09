@@ -43,10 +43,10 @@ const sertifikasiData = [
   },
   {
     id: 4,
-    nama: 'Artificial Intelligence Fundamentals',
-    penerbit: 'Coursera',
-    tahun: '2023',
-    kategori: 'AI',
+    nama: 'Sertifikasi Apresiasi Diskominfo Kota Pontinak',
+    penerbit: 'Dinas Komunikasi dan Informatika Kota Pontianak',
+    tahun: '2025',
+    kategori: 'Cybersecurity',
     gambar: '/sertifikasi/sertifikat4.png',
   },
   {
