@@ -27,8 +27,8 @@ const sertifikasiData = [
   },
   {
     id: 2,
-    nama: 'Web Development Bootcamp',
-    penerbit: 'Udemy',
+    nama: 'Certified Bug Hunter',
+    penerbit: 'Diskominfo Santik Sulawesi Tengah',
     tahun: '2023',
     kategori: 'Web Dev',
     gambar: '/sertifikasi/sertifikat2.png',
