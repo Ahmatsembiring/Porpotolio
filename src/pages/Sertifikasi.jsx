@@ -35,7 +35,7 @@ const sertifikasiData = [
   },
   {
     id: 3,
-    nama: 'Cloud Computing Fundamentals',
+    nama: 'Piagam Penghargaan Keamanan Siber Pemprov Bali',
     penerbit: 'AWS',
     tahun: '2023',
     kategori: 'Cloud',
