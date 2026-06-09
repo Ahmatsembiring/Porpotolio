@@ -36,7 +36,7 @@ const sertifikasiData = [
   {
     id: 3,
     nama: 'Piagam Penghargaan Keamanan Siber Pemprov Bali',
-    penerbit: 'AWS',
+    penerbit: 'Dinas Komunikasi dan Informatika Provinsi Bali',
     tahun: '2023',
     kategori: 'Cloud',
     gambar: '/sertifikasi/sertifikat3.png',
